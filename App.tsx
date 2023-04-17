@@ -1,9 +1,8 @@
 import React from "react";
-import { NativeBaseProvider, Box, Text, extendTheme, ColorMode } from "native-base";
-import type { StorageManager } from "native-base";
+import { NativeBaseProvider, Box, extendTheme, useColorMode } from "native-base";
 
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import ThemeExample from "./src/Screens/ThemeExample";
+import Config from "./src/Screens/Config";
+import { StatusBar } from "react-native";
 
 const newColorTheme = {
   brand: {
@@ -13,41 +12,21 @@ const newColorTheme = {
   },
 };
 
-const config = {
-  useSystemColorMode: false,
-  initialColorMode: 'dark',
-};
-
 const theme = extendTheme({ colors: newColorTheme });
 
 export default function App() {
-  const colorModeManager: StorageManager = {
-    get: async () => {
-      try {
-        let mode = await AsyncStorage.getItem("@my-app-color-mode");
-        return mode === "dark" ? "dark" : "light";
-      } catch (e) {
-        console.log(e);
-        return 'light';
-      }
-    },
-    set: async (value: ColorMode) => {
-      try {
-        if (value) {
-          await AsyncStorage.setItem("@my-app-color-mode", value);
-        }
-      } catch (e) {
-        console.log(e);
-      }
-    },
-  };
+  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
     <NativeBaseProvider theme={theme}>
-      <ThemeExample />
-      {/* <Box flex={1} alignItems="center" justifyContent="center">
-        <Text>Open up App.js to start working on your app!</Text>
-      </Box> */}
+      <Box safeAreaTop flex={1} bg={colorMode == 'dark' ? 'black' : 'white'}>
+        <StatusBar
+          barStyle={colorMode == 'dark' ? 'light-content' : 'dark-content'}
+          translucent={false}
+        />
+        {/* <RootStack /> */}
+        <Config />
+      </Box>
     </NativeBaseProvider>
   );
 }
