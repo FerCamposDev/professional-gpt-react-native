@@ -1,4 +1,4 @@
-import { Alert, Box, Button, HStack, Link, Modal, Text, VStack } from "native-base"
+import { Alert, Button, HStack, Link, Modal, Text, VStack } from "native-base"
 import { useState } from "react";
 
 type Props = {}
