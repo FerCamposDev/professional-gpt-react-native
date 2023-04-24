@@ -1,8 +1,9 @@
 import React from "react";
 import { NativeBaseProvider, Box, extendTheme } from "native-base";
+import { NavigationContainer } from '@react-navigation/native';
 
-import Config from "./src/Screens/Config";
 import { StatusBar } from "react-native";
+import { RootStackNavigator } from "./src/navigation/rootNavigator";
 
 const newColorTheme = {
   brand: {
@@ -16,12 +17,13 @@ const theme = extendTheme({ colors: newColorTheme });
 
 export default function App() {
   return (
-    <NativeBaseProvider theme={theme}>
-      <Box safeAreaTop flex={1}>
-        <StatusBar />
-        {/* <RootStack /> */}
-        <Config />
-      </Box>
-    </NativeBaseProvider>
+    <NavigationContainer>
+      <NativeBaseProvider theme={theme}>
+        <Box safeAreaTop flex={1}>
+          <StatusBar />
+          <RootStackNavigator />
+        </Box>
+      </NativeBaseProvider>
+    </NavigationContainer>
   );
 }
