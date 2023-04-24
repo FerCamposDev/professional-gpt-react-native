@@ -1,5 +1,5 @@
 import React from "react";
-import { NativeBaseProvider, Box, extendTheme, useColorMode } from "native-base";
+import { NativeBaseProvider, Box, extendTheme } from "native-base";
 
 import Config from "./src/Screens/Config";
 import { StatusBar } from "react-native";
@@ -15,15 +15,10 @@ const newColorTheme = {
 const theme = extendTheme({ colors: newColorTheme });
 
 export default function App() {
-  const { colorMode, toggleColorMode } = useColorMode();
-
   return (
     <NativeBaseProvider theme={theme}>
-      <Box safeAreaTop flex={1} bg={colorMode == 'dark' ? 'black' : 'white'}>
-        <StatusBar
-          barStyle={colorMode == 'dark' ? 'light-content' : 'dark-content'}
-          translucent={false}
-        />
+      <Box safeAreaTop flex={1}>
+        <StatusBar />
         {/* <RootStack /> */}
         <Config />
       </Box>

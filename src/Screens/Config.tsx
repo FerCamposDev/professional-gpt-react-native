@@ -1,4 +1,4 @@
-import { Heading, Button, Text, VStack, Alert, HStack } from "native-base"
+import { Heading, Text, VStack, Alert, HStack } from "native-base"
 import APIKeyModal from "../Components/APIKeyModal"
 import APIKeyKeeper from "../Components/APIKeyKeeper"
 
