@@ -1,6 +1,10 @@
 import { Button, Center, Text, useColorMode, useColorModeValue } from "native-base";
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { Route } from "../navigation/routes.types";
 
-function ThemeExample() {
+type Props = NativeStackScreenProps<any, Route.THEME>;
+
+function ThemeExample({ navigation }: Props) {
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
@@ -10,6 +14,7 @@ function ThemeExample() {
         <Text bold>{useColorModeValue('Light', 'Dark')}</Text>
       </Text>
       <Button onPress={toggleColorMode}>Toggle</Button>
+      <Button onPress={() => navigation.push('config')}>Go to config</Button>
     </Center>
   );
 }

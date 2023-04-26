@@ -2,9 +2,7 @@ import { Heading, Text, VStack, Alert, HStack } from "native-base"
 import APIKeyModal from "../Components/APIKeyModal"
 import APIKeyKeeper from "../Components/APIKeyKeeper"
 
-type Props = {}
-
-const Config = (props: Props) => {
+const Config = () => {
   return (
     <VStack padding={4} space={4}>
       <Heading textAlign="center">Bienvenido a Professional AI</Heading>
