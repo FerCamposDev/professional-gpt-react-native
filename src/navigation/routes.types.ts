@@ -1,5 +1,5 @@
 export enum Route {
-  THEME = 'theme',
-  HOME = 'home',
-  CONFIG = 'config'
+  THEME = "theme",
+  HOME = "home",
+  CONFIG = "config",
 }
