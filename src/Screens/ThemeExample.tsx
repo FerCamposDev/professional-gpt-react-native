@@ -12,7 +12,7 @@ import { Route } from "../navigation/routes.types";
 type Props = NativeStackScreenProps<any, Route.THEME>;
 
 function ThemeExample({ navigation }: Props) {
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { toggleColorMode } = useColorMode();
 
   return (
     <Center flex={1} bg={useColorModeValue("white", "black")}>
