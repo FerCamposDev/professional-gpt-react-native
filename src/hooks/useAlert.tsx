@@ -7,42 +7,42 @@ function useAlert() {
     const description = error?.message || error.msg || error.toString();
     console.error(error);
     show({
-      title: 'Error',
+      title: "Error",
       description,
-      bgColor: 'error.600',
-    })
-  }
+      bgColor: "error.600",
+    });
+  };
 
   const error = (description: string) => {
     show({
-      title: 'Error',
+      title: "Error",
       description,
-      bgColor: 'error.600',
-    })
+      bgColor: "error.600",
+    });
   };
 
   const success = (description: string, title?: string) => {
     show({
       title,
       description,
-      bgColor: 'success.600',
-    })
+      bgColor: "success.600",
+    });
   };
 
   const warning = (description: string, title?: string) => {
     show({
       title,
       description,
-      bgColor: 'warning.600',
-    })
+      bgColor: "warning.600",
+    });
   };
 
   const info = (description: string, title?: string) => {
     show({
       title,
       description,
-      bgColor: 'info.600',
-    })
+      bgColor: "info.600",
+    });
   };
 
   return {
@@ -50,8 +50,8 @@ function useAlert() {
     warning,
     info,
     success,
-    unknownError
-  }
+    unknownError,
+  };
 }
 
 export default useAlert;

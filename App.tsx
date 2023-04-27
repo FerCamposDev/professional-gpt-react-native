@@ -1,8 +1,7 @@
-import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
 import { NativeBaseProvider, Box, extendTheme } from "native-base";
-import { NavigationContainer } from '@react-navigation/native';
-
 import { StatusBar } from "react-native";
+
 import { RootStackNavigator } from "./src/navigation/rootNavigator";
 
 const newColorTheme = {
