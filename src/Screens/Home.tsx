@@ -1,19 +1,28 @@
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Button, Center, Text } from "native-base";
 
-import Chat from "../Components/Chat";
 import { Route } from "../navigation/routes.types";
 
-type Props = NativeStackScreenProps<any, Route.HOME>;
+type Params = {
+  apiKey: string;
+};
 
-const Home = ({ navigation }: Props) => {
+type Props = NativeStackScreenProps<any, Route.Home>;
+
+const Home = ({ route, navigation }: Props) => {
+  const apiKey = route.params?.apiKey;
+
   return (
     <Center flex={1}>
       <Text fontSize="lg" display="flex">
-        Home
+        Bienvenido tienes configurada una api key:
       </Text>
-      <Button onPress={() => navigation.push("config")}>Go to config</Button>
-      <Chat />
+      <Text fontSize="lg" display="flex">
+        {apiKey}
+      </Text>
+      <Button onPress={() => navigation.push(Route.Config)}>
+        Configurar otra
+      </Button>
     </Center>
   );
 };

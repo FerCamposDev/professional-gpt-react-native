@@ -9,7 +9,7 @@ import {
 
 import { Route } from "../navigation/routes.types";
 
-type Props = NativeStackScreenProps<any, Route.THEME>;
+type Props = NativeStackScreenProps<any, Route.Theme>;
 
 function ThemeExample({ navigation }: Props) {
   const { toggleColorMode } = useColorMode();

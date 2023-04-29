@@ -4,7 +4,7 @@ import { getStringAsync } from "expo-clipboard";
 import { Button, IconButton, Input, VStack } from "native-base";
 import { useEffect, useState } from "react";
 
-import useAlert from "../hooks/useAlert";
+import useAlert from "../../hooks/useAlert";
 
 const APIKeyKeeper = () => {
   const { getItem, setItem } = useAsyncStorage("@api-key");

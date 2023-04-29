@@ -1,6 +1,7 @@
 export enum Route {
-  THEME = "theme",
-  HOME = "home",
-  CONFIG = "config",
-  MESSENGER = "messenger",
+  Theme = "theme",
+  Init = "init",
+  Home = "home",
+  Config = "config",
+  Messenger = "messenger",
 }

@@ -1,7 +1,7 @@
 import { Heading, Text, VStack, Alert, HStack } from "native-base";
 
-import APIKeyKeeper from "../Components/APIKeyKeeper";
-import APIKeyModal from "../Components/APIKeyModal";
+import APIKeyKeeper from "../Components/config/APIKeyKeeper";
+import APIKeyModal from "../Components/config/APIKeyModal";
 
 const Config = () => {
   return (
