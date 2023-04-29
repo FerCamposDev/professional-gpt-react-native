@@ -4,12 +4,20 @@ import React from "react";
 import { Route } from "./routes.types";
 import Config from "../Screens/Config";
 import Home from "../Screens/Home";
+import Messenger from "../Screens/Messenger";
 
 const Stack = createNativeStackNavigator();
 
 export function RootStackNavigator() {
   return (
     <Stack.Navigator>
+      <Stack.Screen
+        name={Route.MESSENGER}
+        component={Messenger}
+        options={{
+          headerShown: false,
+        }}
+      />
       <Stack.Screen
         name={Route.HOME}
         component={Home}
