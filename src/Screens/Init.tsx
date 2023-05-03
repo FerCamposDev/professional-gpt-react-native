@@ -1,9 +1,8 @@
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useQuery } from "@tanstack/react-query";
-import { Button, Center, Text } from "native-base";
+import { Button, Center, HStack, Heading, Spinner, Text } from "native-base";
 
-import Chat from "../Components/Chat";
 import useAlert from "../hooks/useAlert";
 import { Route } from "../navigation/routes.types";
 
@@ -13,26 +12,28 @@ const Init = ({ navigation }: Props) => {
   const { getItem } = useAsyncStorage("@api-key");
   const alert = useAlert();
 
-  const { isLoading } = useQuery({
+  const { isLoading, isFetching } = useQuery({
     queryKey: ["api-key"],
     queryFn: () => getItem(),
     onError: alert.unknownError,
     onSuccess: (data) => {
       if (data) {
-        navigation.push(Route.Home, {
+        navigation.replace(Route.Home, {
           apiKey: data,
         });
       }
     },
   });
 
-  if (isLoading) {
+  if (isLoading || isFetching) {
     return (
       <Center flex={1}>
-        <Text fontSize="lg" display="flex">
-          Cargando...
-        </Text>
-        <Chat />
+        <HStack space={4}>
+          <Spinner />
+          <Heading color="primary.500" fontSize="md">
+            Cargando...
+          </Heading>
+        </HStack>
       </Center>
     );
   }
@@ -43,7 +44,6 @@ const Init = ({ navigation }: Props) => {
         No tienes configurada tu api key
       </Text>
       <Button onPress={() => navigation.push("config")}>Configurar</Button>
-      <Chat />
     </Center>
   );
 };

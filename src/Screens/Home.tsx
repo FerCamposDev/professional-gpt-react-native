@@ -1,29 +1,41 @@
+import { Fontisto } from "@expo/vector-icons";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Button, Center, Text } from "native-base";
+import { Button, Center, HStack, IconButton, Text, VStack } from "native-base";
 
+import { RootStackParamList } from "../navigation/rootNavigator";
 import { Route } from "../navigation/routes.types";
 
-type Params = {
-  apiKey: string;
-};
-
-type Props = NativeStackScreenProps<any, Route.Home>;
+type Props = NativeStackScreenProps<RootStackParamList, Route.Home>;
 
 const Home = ({ route, navigation }: Props) => {
   const apiKey = route.params?.apiKey;
 
   return (
-    <Center flex={1}>
-      <Text fontSize="lg" display="flex">
-        Bienvenido tienes configurada una api key:
-      </Text>
-      <Text fontSize="lg" display="flex">
-        {apiKey}
-      </Text>
-      <Button onPress={() => navigation.push(Route.Config)}>
-        Configurar otra
-      </Button>
-    </Center>
+    <VStack>
+      <HStack justifyContent="flex-end">
+        <IconButton
+          icon={<Fontisto name="player-settings" size={24} color="black" />}
+          onPress={() => navigation.push(Route.Config)}
+        />
+      </HStack>
+      <Center alignItems="center">
+        <Text fontSize="lg" display="flex">
+          Bienvenido tienes configurada una api key:
+        </Text>
+        <Text fontSize="lg" display="flex">
+          {apiKey}
+        </Text>
+        <Button
+          onPress={() =>
+            navigation.push(Route.Messenger, {
+              screenTitle: "Dinamic title",
+            })
+          }
+        >
+          Ir al chat
+        </Button>
+      </Center>
+    </VStack>
   );
 };
 

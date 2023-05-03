@@ -7,7 +7,15 @@ import Home from "../Screens/Home";
 import Init from "../Screens/Init";
 import Messenger from "../Screens/Messenger";
 
-const Stack = createNativeStackNavigator();
+export type RootStackParamList = {
+  [Route.Init]: undefined;
+  [Route.Home]: { apiKey: string };
+  [Route.Messenger]: { screenTitle: string };
+  [Route.Config]: undefined;
+  [Route.Theme]: undefined;
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export function RootStackNavigator() {
   return (
@@ -29,9 +37,9 @@ export function RootStackNavigator() {
       <Stack.Screen
         name={Route.Messenger}
         component={Messenger}
-        options={{
-          headerShown: false,
-        }}
+        options={({ route }) => ({
+          title: route?.params?.screenTitle,
+        })}
       />
       <Stack.Screen
         name={Route.Config}
